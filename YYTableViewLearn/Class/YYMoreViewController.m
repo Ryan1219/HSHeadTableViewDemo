@@ -8,7 +8,7 @@
 
 #import "YYMoreViewController.h"
 
-@interface YYMoreViewController ()
+@interface YYMoreViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -16,16 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self configBaseTableView];
+    self.baseTableView.delegate = self;
+    self.baseTableView.dataSource = self;
 }
 
-
-//- (NSString *)description {
-//    
-//    return @"more";
-//}
 
 //MARK:- TableView Delegate & DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -53,7 +51,7 @@
     for (UIView *subView in cell.contentView.subviews) {
         [subView removeFromSuperview];
     }
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 199.5, ScreenWidth, 0.5)];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 179.5, ScreenWidth, 0.5)];
     lineView.backgroundColor = [UIColor yellowColor];
     [cell.contentView addSubview:lineView];
     
@@ -64,7 +62,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 200;
+    return 180;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

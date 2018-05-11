@@ -8,7 +8,7 @@
 
 #import "YYDynamicViewController.h"
 
-@interface YYDynamicViewController ()
+@interface YYDynamicViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -16,25 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self configBaseTableView];
+    self.baseTableView.delegate = self;
+    self.baseTableView.dataSource = self;
 }
 
-//- (void)resetTableViewOffsetY:(CGFloat)offsetY {
-//    
-//    CGFloat headHeight = (ScreenWidth - 30) / 2 + 20 + 6;
-//    if (self.tableView.contentOffset.y > headHeight && offsetY > self.tableView.contentOffset.y) {
-//        return;
-//    }
-//    
-//    [self.tableView setContentOffset:CGPointMake(0, offsetY)];
-//}
-
-//- (NSString *)description {
-//    
-//    return @"dynamic";
-//}
 //MARK:- TableView Delegate & DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
@@ -56,7 +45,6 @@
     
     cell.textLabel.text = [NSString stringWithFormat:@"dynamic %zd",indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:15];
-//    cell.textLabel.textAlignment = NSTextAlignmentCenter;
     
     for (UIView *subView in cell.contentView.subviews) {
         [subView removeFromSuperview];
@@ -64,8 +52,6 @@
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 44.5, ScreenWidth, 0.5)];
     lineView.backgroundColor = [UIColor lightGrayColor];
     [cell.contentView addSubview:lineView];
-    
-//     cell.backgroundColor = [UIColor greenColor];
     
     return cell;
 }

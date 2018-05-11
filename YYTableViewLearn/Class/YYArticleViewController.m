@@ -8,7 +8,7 @@
 
 #import "YYArticleViewController.h"
 
-@interface YYArticleViewController ()
+@interface YYArticleViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -18,22 +18,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    
+    [self configBaseTableView];
+    self.baseTableView.delegate = self;
+    self.baseTableView.dataSource = self;
 }
 
-//- (void)resetTableViewOffsetY:(CGFloat)offsetY {
-//    
-//    CGFloat headHeight = (ScreenWidth - 30) / 2 + 20 + 6;
-//    if (self.tableView.contentOffset.y > headHeight && offsetY > self.tableView.contentOffset.y) {
-//        return;
-//    }
-//    
-//    [self.tableView setContentOffset:CGPointMake(0, offsetY)];
-//}
-
-//- (NSString *)description {
-//    
-//    return @"article";
-//}
 
 //MARK:- TableView Delegate & DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

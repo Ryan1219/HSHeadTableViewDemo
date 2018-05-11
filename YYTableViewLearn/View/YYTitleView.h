@@ -10,10 +10,10 @@
 
 @interface YYTitleView : UIView
 
-/* <#description#> */
-@property (nonatomic,strong) void(^clickTitleActionBlock)(NSInteger index);
-
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)titles;
+
+/* <#description#> */
+@property (nonatomic,strong) void(^clickTitleActionBlock)(NSString *title,NSInteger index);
 
 - (void)resetCurrentTitleIndex:(NSInteger)index;
 

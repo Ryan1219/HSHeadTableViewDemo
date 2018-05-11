@@ -11,13 +11,15 @@
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
-@interface YYBaseViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@interface YYBaseViewController : UIViewController
+
+@property (nonatomic,strong) UITableView *baseTableView;
+
+- (void)configBaseTableView;
 
 /* <#description#> */
-@property (nonatomic,strong) UITableView *tableView;
-/* <#description#> */
-@property (nonatomic,strong) void(^offset)(CGFloat offsetY, UIViewController *control);
-
-- (void)resetTableViewOffsetY:(CGFloat)offsetY;
+//@property (nonatomic,strong) void(^offset)(CGFloat offsetY, UIViewController *control);
+//
+//- (void)resetTableViewOffsetY:(CGFloat)offsetY;
 
 @end
